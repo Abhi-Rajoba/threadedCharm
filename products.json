@@ -1,0 +1,74 @@
+[
+  {
+    "id": "floral-birthday-hoop",
+    "title": "Floral Birthday Hoop",
+    "price": 800,
+    "image": "images/products/Floral Birthday Hoop.jpg",
+    "category": "Hoop Art & Frames",
+    "description": "Personalized hand-embroidered hoop art featuring a beautiful wreath of French knot roses and custom calligraphy."
+  },
+  {
+    "id": "princess-ribbon-hoop",
+    "title": "Princess Ribbon Hoop",
+    "price": 1200,
+    "image": "images/products/Princess Ribbon Hoop.jpg",
+    "category": "Hoop Art & Frames",
+    "description": "An enchanting piece showcasing a figure with a voluminous ribbon skirt, accented with a vibrant cluster of 3D ribbon roses."
+  },
+  {
+    "id": "newborn-footprint-art",
+    "title": "Newborn Footprint Art",
+    "price": 750,
+    "image": "images/products/Newborn Footprint Art.jpg",
+    "category": "Hoop Art & Frames",
+    "description": "A heartfelt piece with embroidered baby footprints, a custom quote, and delicate floral accents—perfect for nurseries."
+  },
+  {
+    "id": "custom-floral-bag",
+    "title": "Custom Floral Bag",
+    "price": 350,
+    "image": "images/products/Custom Floral Bag.jpg",
+    "category": "Personalized Gifts",
+    "description": "Small, natural canvas pouch hand-embroidered with a delicate bouquet and personalized with a name—ideal for favors or bridesmaids' gifts."
+  },
+  {
+    "id": "christmas-hair-clips-set",
+    "title": "Christmas Holiday Hair Clips Set",
+    "price": 500,
+    "image": "images/products/Christmas Holiday Hair Clips Set.jpg",
+    "category": "Personalized Gifts",
+    "description": "Festive set of embroidered snap hair clips featuring classic holiday motifs like Santa hats, snowflakes, wreaths, and Christmas trees."
+  },
+  {
+    "id": "monochrome-rose-shirt",
+    "title": "Monochrome Rose Shirt",
+    "price": 1800,
+    "image": "images/products/Monochrome Rose Shirt.jpg",
+    "category": "Embroidered Clothing",
+    "description": "Stylish white button-down shirt with a bold, diagonal trail of red roses and vines, offering a modern, masculine floral look."
+  },
+  {
+    "id": "pastel-floral-kurti",
+    "title": "Pastel Floral Kurti",
+    "price": 1500,
+    "image": "images/products/Pastel Floral Kurti.jpg",
+    "category": "Embroidered Clothing",
+    "description": "Soft linen kurti (or tunic) in a gentle color, featuring dainty, scattered floral motifs on the sleeves, hem, and neckline."
+  },
+  {
+    "id": "vibrant-yoke-neckline-blouse",
+    "title": "Vibrant Yoke/Neckline Blouse",
+    "price": 2000,
+    "image": "images/products/Neckline Blouse.jpg",
+    "category": "Embroidered Clothing",
+    "description": "Richly embroidered garment featuring a dense, colorful floral design around the neck opening and yoke for a statement look."
+  },
+  {
+    "id": "shin-chan-character-hoop",
+    "title": "Shin-chan Character Hoop",
+    "price": 700,
+    "image": "images/products/Shin-chan Character Hoop.jpg",
+    "category": "Kids & Character Hoops",
+    "description": "A fun, hand-stitched hoop art featuring the popular animated character Shin-chan, perfect as a playful room decor piece."
+  }
+]

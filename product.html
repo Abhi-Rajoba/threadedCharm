@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Product</title>
+  <link rel="stylesheet" href="css/vendor.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .product-page { 
+        padding: var(--vspace-3); 
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .product-hero { 
+        display: flex; 
+        gap: var(--vspace-2); 
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+    .product-hero__img { 
+        flex: 0 0 400px; 
+        max-width: 100%;
+        border-radius: var(--radius-md); 
+        overflow: hidden; 
+    }
+    .product-hero__img img{ 
+        width: 100%; 
+        height: auto; 
+        display: block; 
+    }
+    .product-hero__details { 
+        flex: 1 1 400px;
+    }
+    .product-price { 
+        font-size: var(--text-2xl); 
+        font-weight: 700; 
+        margin-bottom: var(--vspace-0_75); 
+        color: var(--color-text-dark);
+    }
+    .btn-back { 
+        display: inline-block; 
+        margin-bottom: var(--vspace-1); 
+    }
+
+    /* Quantity Controls */
+    .qty-control {
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-sm);
+        margin-bottom: var(--vspace-1);
+    }
+    .qty-btn {
+        background: var(--color-gray-15);
+        border: none;
+        padding: var(--vspace-0_25) var(--vspace-0_5);
+        cursor: pointer;
+        font-size: var(--text-lg);
+        line-height: 1;
+    }
+    .qty-input {
+        width: 60px;
+        border: none;
+        text-align: center;
+        padding: var(--vspace-0_25);
+        background: transparent;
+        -moz-appearance: textfield;
+    }
+    .qty-input::-webkit-outer-spin-button,
+    .qty-input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    .action-row {
+        margin-top: var(--vspace-1);
+    }
+
+    /* Modal Styles */
+    .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+    }
+    .modal-content {
+        background: white;
+        padding: var(--vspace-2);
+        border-radius: var(--radius-md);
+        max-width: 500px;
+        width: 90%;
+        max-height: 90vh;
+        overflow-y: auto;
+        position: relative;
+    }
+    .modal-close {
+        position: absolute;
+        top: var(--vspace-0_5);
+        right: var(--vspace-0_5);
+        background: none;
+        border: none;
+        font-size: var(--text-xl);
+        cursor: pointer;
+        padding: var(--vspace-0_25);
+    }
+    .form-row {
+        margin-bottom: var(--vspace-1);
+    }
+    .form-row label {
+        display: block;
+        margin-bottom: var(--vspace-0_25);
+        font-weight: 600;
+    }
+    .form-row input,
+    .form-row textarea {
+        width: 100%;
+        padding: var(--vspace-0_5);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-sm);
+    }
+    .form-row.row--full {
+        grid-column: 1 / -1;
+    }
+    .form-actions {
+        display: flex;
+        gap: var(--vspace-0_5);
+        justify-content: flex-end;
+        margin-top: var(--vspace-1_5);
+    }
+    .field-error {
+        color: #dc2626;
+        font-size: var(--text-sm);
+        margin-top: var(--vspace-0_25);
+    }
+    .order-summary {
+        background: var(--color-gray-15);
+        padding: var(--vspace-1);
+        border-radius: var(--radius-sm);
+        margin-bottom: var(--vspace-1_5);
+    }
+    .order-summary__title {
+        margin-bottom: var(--vspace-0_5);
+    }
+    .order-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .order-item {
+        display: flex;
+        justify-content: space-between;
+        padding: var(--vspace-0_25) 0;
+    }
+    .order-summary__total {
+        font-weight: 700;
+        border-top: 1px solid var(--color-border);
+        padding-top: var(--vspace-0_5);
+        margin-top: var(--vspace-0_5);
+    }
+    .u-hidden {
+        display: none !important;
+    }
+    .no-scroll {
+        overflow: hidden;
+    }
+
+    @media (max-width: 768px) {
+        .product-hero {
+            flex-direction: column;
+        }
+        .product-hero__img {
+            flex: 0 0 auto;
+            width: 100%;
+        }
+        .form-actions {
+            flex-direction: column;
+        }
+    }
+  </style>
+</head>
+<body>
+  <div id="page" class="s-pagewrap product-page">
+
+    <div class="container">
+      <a href="index.html" class="btn btn--primary btn-back">← Back to Menu</a>
+      <main>
+        <div id="product-root">Loading product...</div>
+      </main>
+    </div>
+
+    </div>
+
+    <!-- Buy Now Modal -->
+    <div id="buy-modal" class="modal u-hidden" role="dialog" aria-modal="true" aria-labelledby="buy-modal-title">
+      <div class="modal-content">
+        <button type="button" id="buy-close" class="modal-close" aria-label="Close">✕</button>
+        <h2 id="buy-modal-title">Confirm Order</h2>
+        <div id="order-summary" class="order-summary">
+          <h3 class="order-summary__title">Order Summary</h3>
+          <div class="order-summary__items">No items yet.</div>
+          <div class="order-summary__total"></div>
+        </div>
+        <form id="buy-form">
+          <div class="form-row">
+            <label for="cust-name">Name *</label>
+            <input id="cust-name" name="name" type="text" required autocomplete="name" placeholder="Your full name">
+            <small id="err-name" class="field-error"></small>
+          </div>
+          <div class="form-row">
+            <label for="cust-mobile">Mobile *</label>
+            <input id="cust-mobile" name="mobile" type="tel" required autocomplete="tel" placeholder="e.g. 9876543210">
+            <small id="err-mobile" class="field-error"></small>
+          </div>
+          <div class="form-row">
+            <label for="cust-email">Email *</label>
+            <input id="cust-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
+            <small id="err-email" class="field-error"></small>
+          </div>
+          <div class="form-row row--full">
+            <label for="cust-address">Address *</label>
+            <textarea id="cust-address" name="address" rows="3" required autocomplete="street-address" placeholder="House, street, city, pin"></textarea>
+            <small id="err-address" class="field-error"></small>
+          </div>
+          <div class="form-row row--full">
+            <label for="cust-additional">Additional info (optional)</label>
+            <textarea id="cust-additional" name="additional" rows="2" placeholder="Landmark, delivery notes, etc."></textarea>
+          </div>
+          <div class="form-actions row--full">
+            <button type="button" id="buy-cancel" class="btn">Cancel</button>
+            <button type="submit" id="buy-confirm" class="btn btn--primary">Confirm Order</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/product.js"></script>
+</body>
+</html>
